@@ -1,0 +1,10 @@
+# Modifikation-Request Kommentar enthält Bug-Id in einer der folgenden Formen [id] wird im Programm durch die Bug id ersetzt
+# (Beispiel: '#[id].' würde auf die Zeichenkette 'fixes Bug #299.' passen aber nicht auf 'fixes Bug # 299.')
+  bugid='#[id].';' [id] ';' [id],';' [id].';' [id] ';' [id].';' [id]\n'
+#
+# Wörter die gemeinsam mit der Bug-Id im Modifikation-Request Kommentar angegeben sein müssen (wichtig: in Kleinbuchstaben angeben)
+# (Beispiel: Angabe von bug und fix passt sowohl auf die Zeichenkette 'fixes Bug #299.' als auch auf 'bug 299 fixed' aber nicht auf 'Bug 299')
+  bugkeywords=bug;fix
+#
+# Bug Priorität enthält einen der folgenden Werte
+  priority=P1;P2
