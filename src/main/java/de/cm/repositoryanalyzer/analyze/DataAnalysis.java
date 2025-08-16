@@ -66,14 +66,14 @@ public class DataAnalysis extends Observable implements Runnable {
     public void startAnalysis() {
         try {
             setChanged();
-            notifyObservers("Daten fÃ¼r die Analyse vorbereiten");
+            notifyObservers("Daten für die Analyse vorbereiten");
 
             prepareData = new PreparedData(DataStore.dataStore.getActualProject(), this);
             prepareData.prepareData();
 
             if (doBugRelatedCount) {
                 setChanged();
-                notifyObservers("Analysiere die durch Bugs verursachten Ã„nderungen");
+                notifyObservers("Analysiere die durch Bugs verursachten Änderungen");
                 // Thread.sleep(500);
 
                 // analyzeBugRelatedCount = new BugRelatedCount();

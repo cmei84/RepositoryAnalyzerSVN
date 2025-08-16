@@ -72,8 +72,8 @@ public class ImportComponent {
     private ImageIcon infoIcon;
 
     // Field Strings
-    private final String svnUrlEmptyText = "Hier SVN-Repository URL einfÃ¼gen.";
-    private final String bugUrlEmptyText = "Hier Bug-Tracker URL oder den Dateipfad einfÃ¼gen.";
+    private final String svnUrlEmptyText = "Hier SVN-Repository URL einfügen.";
+    private final String bugUrlEmptyText = "Hier Bug-Tracker URL oder den Dateipfad einfügen.";
     private final String userEmptyText = "Benutzername";
     private final String passEmptyText = "Passwort";
 
@@ -81,7 +81,7 @@ public class ImportComponent {
     private final String svnBandToolTipText = "<html><strong>SVN - Repository:</strong><br>Hier bitte alle Daten zum<br>SVN - Repository eingeben.</html>";
     private final String bugBandToolTipText = "<html><strong>Bug - Tracker:</strong><br>Hier bitte alle Daten zum<br>Bug - Tracker eingeben.</html>";
     private final String runImportBandToolTipText = "<html><strong>Import:</strong><br>Hier kann der Import gestartet werden.</html>";
-    private final String infoBandToolTipText = "<html><strong>Info:</strong><br>Hier erhalten Sie alle nÃ¶tigen Informationen,<br>um den Importvorgang auszufÃ¼hren.</html>";
+    private final String infoBandToolTipText = "<html><strong>Info:</strong><br>Hier erhalten Sie alle nötigen Informationen,<br>um den Importvorgang auszuführen.</html>";
 
     // Icon
     private final String runImportIcon = "icons/runImport.64.png";
@@ -94,16 +94,16 @@ public class ImportComponent {
         this.mainWindow = mainWindow;
         this.types = mainWindow.getTypes();
 
-        openXMLFileCommandButton = new JCommandButton("XML-Datei Ã¶ffnen", types.getIcon(openXMLIcon));
+        openXMLFileCommandButton = new JCommandButton("XML-Datei öffnen", types.getIcon(openXMLIcon));
         openXMLFileCommandButtonRichToolTip = new RichTooltip();
-        openXMLFileCommandButtonRichToolTip.setTitle("XML-Datei Ã¶ffnen");
+        openXMLFileCommandButtonRichToolTip.setTitle("XML-Datei öffnen");
         openXMLFileCommandButtonRichToolTip.addDescriptionSection("Ã–ffnen einer XML-Datei mit Ticket-Informationen des Bug-Trackers");
         openXMLFileCommandButton.setActionRichTooltip(openXMLFileCommandButtonRichToolTip);
 
         openXMLFileCommandButton.addActionListener(new OpenXMLFileActionListener(this));
 
         mainWindow.addTaskBarButton(openXMLFileCommandButton);
-        mainWindow.addApplicationMenuEntry(new RibbonApplicationMenuEntryPrimary(types.getIcon(openXMLIcon), "XML-Datei Ã¶ffnen", new OpenXMLFileActionListener(this),
+        mainWindow.addApplicationMenuEntry(new RibbonApplicationMenuEntryPrimary(types.getIcon(openXMLIcon), "XML-Datei öffnen", new OpenXMLFileActionListener(this),
                 openXMLFileCommandButton.getCommandButtonKind()));
 
         // SVN
@@ -122,7 +122,7 @@ public class ImportComponent {
         svnPassTextField.setEnabled(false);
         svnPassTextField.addMouseListener(new EmptyTextfieldMouseListener(svnPassTextField));
         svnPassTextField.addKeyListener(new ValidateImportInputData(this));
-        svnUserPassNeededCheckBox = new JCheckBox("Benutzer und Passwort nicht nÃ¶tig");
+        svnUserPassNeededCheckBox = new JCheckBox("Benutzer und Passwort nicht nötig");
         svnUserPassNeededCheckBox.addActionListener(new EnableJTextfieldActionListener(svnUserTextField));
         svnUserPassNeededCheckBox.addActionListener(new EnableJTextfieldActionListener(svnPassTextField));
         svnUserPassNeededCheckBox.addActionListener(new ValidateImportActionListener(this));
@@ -152,7 +152,7 @@ public class ImportComponent {
         bugPassTextField.setEnabled(false);
         bugPassTextField.addMouseListener(new EmptyTextfieldMouseListener(bugPassTextField));
         bugPassTextField.addKeyListener(new ValidateImportInputData(this));
-        bugUserPassNeededCheckBox = new JCheckBox("Benutzer und Passwort nicht nÃ¶tig");
+        bugUserPassNeededCheckBox = new JCheckBox("Benutzer und Passwort nicht nötig");
         bugUserPassNeededCheckBox.addActionListener(new EnableJTextfieldActionListener(bugUserTextField));
         bugUserPassNeededCheckBox.addActionListener(new EnableJTextfieldActionListener(bugPassTextField));
         bugUserPassNeededCheckBox.addActionListener(new ValidateImportActionListener(this));
@@ -188,7 +188,7 @@ public class ImportComponent {
         infoBand = new JRibbonBand("Info", types.getIcon(""));
         infoPanel = new JPanel();
         infoPanel.setLayout(new TableLayout(types.getInfoSize()));
-        infoLabel = new JLabel("<html>Bitte fÃ¼llen Sie alle nÃ¶tigten Felder aus,<br>um den Import zu Starten.</html>");
+        infoLabel = new JLabel("<html>Bitte füllen Sie alle nötigten Felder aus,<br>um den Import zu Starten.</html>");
         infoIcon = new ImageIcon(types.getImage(types.getInfoIconPath()));
         infoIconLabel = new JLabel(infoIcon);
         infoIconLabel.setAlignmentX(JLabel.LEFT_ALIGNMENT);
@@ -242,7 +242,7 @@ public class ImportComponent {
             infoLabel.setText("Der Import kann nun gestartet werden.");
             this.runImportCommandButton.setEnabled(true);
         } else {
-            infoLabel.setText("<html>Bitte fÃ¼llen Sie noch folgende Felder aus:<br>" + result.substring(0, result.length() - 2) + "</html>");
+            infoLabel.setText("<html>Bitte füllen Sie noch folgende Felder aus:<br>" + result.substring(0, result.length() - 2) + "</html>");
             this.runImportCommandButton.setEnabled(false);
         }
     }

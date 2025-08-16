@@ -144,21 +144,21 @@ public class Statistics implements IAnalysis {
         report.append("<html><center><table><tr><td>");
         report.append("<h2>Projekt:</h2></td><td><h2><i>" + project.getName() + "</i></h2></td></tr>");
 
-        report.append("<tr><td><h3>GewÃ¤hlter Zeitraum</h3></td><td></td></tr>");
+        report.append("<tr><td><h3>Gewählter Zeitraum</h3></td><td></td></tr>");
         report.append("<tr><td>Modifikation-Requests:</td><td>" + timeWindowModificationRequestCount + "</td></tr>");
         report.append("<tr><td>Modifikation-Requests mit Bug-Info:</td><td>" + timeWindowTicketRelatedModificationRequests + "</td></tr>");
-        report.append("<tr><td>GrÃ¶ÃŸte Ã„nderung</td><td>Modifikation-Request der Revision " + timeWindowModificationRequestMostPathsChanged.getRevision() + " Ã¤nderte "
+        report.append("<tr><td>Größte Änderung</td><td>Modifikation-Request der Revision " + timeWindowModificationRequestMostPathsChanged.getRevision() + " änderte "
                 + timeWindowModificationRequestMostPathsChanged.getChangedPaths().size() + " Dateien</td></tr>");
-        report.append("<tr><td>Tickets hinzugefÃ¼gt:</td><td>" + timeWindowTicketAddedCount + "</td></tr>");
+        report.append("<tr><td>Tickets hinzugefügt:</td><td>" + timeWindowTicketAddedCount + "</td></tr>");
         report.append("<tr><td>Tickets geschlossen:</td><td>" + timeWindowTicketResolvedCount + "</td></tr>");
         report.append("<tr><td>Ticket Tendenz:</td><td>");
         int tendenz = timeWindowTicketAddedCount - timeWindowTicketResolvedCount;
         if (tendenz > 0) {
-            report.append("steigend (" + tendenz + " Bugs mehr hinzugefÃ¼gt als behoben)");
+            report.append("steigend (" + tendenz + " Bugs mehr hinzugefügt als behoben)");
         } else if (tendenz == 0) {
             report.append("haltend");
         } else {
-            report.append("fallend (" + tendenz + " mehr Bugs behoben als hinzugefÃ¼gt)");
+            report.append("fallend (" + tendenz + " mehr Bugs behoben als hinzugefügt)");
         }
         report.append("</td></tr>");
         report.append("<tr><td>Am meisten Tickets gefixt:</td><td>" + maxTimeWindowTicketsFixed.getName() + " (" + maxTimeWindowTicketsFixed.getValue() + ")</td></tr>");
@@ -168,9 +168,9 @@ public class Statistics implements IAnalysis {
          */
         report.append("<tr><td><h3>Gesamtes Projekt</h3></td><td></td></tr>");
         report.append("<tr><td>Modifikation-Requests:</td><td>" + overallModificationRequestCount + "</td></tr>");
-        report.append("<tr><td>GrÃ¶ÃŸte Ã„nderung</td><td>Modifikation-Request der Revision " + overallModificationRequestMostPathsChanged.getRevision() + " Ã¤nderte "
+        report.append("<tr><td>Größte Änderung</td><td>Modifikation-Request der Revision " + overallModificationRequestMostPathsChanged.getRevision() + " änderte "
                 + overallModificationRequestMostPathsChanged.getChangedPaths().size() + " Dateien</td></tr>");
-        report.append("<tr><td>Ein Modifikation-Request Ã¤nderte Durchschnittlich:</td><td>"
+        report.append("<tr><td>Ein Modifikation-Request änderte Durchschnittlich:</td><td>"
 
         + overallModificationRequestPathsChangedAvg + " Dateien</td></tr>");
         report.append("<tr><td>Tickets:</td><td>" + overallTicketCount + "</td></tr>");

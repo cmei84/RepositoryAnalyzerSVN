@@ -120,12 +120,12 @@ public class Draw implements TMComputeDraw {
             count = count / Node.getFactor();
 
             String tooltip;
-            tooltip = "<html>" + "Pfad: " + name + "<br>" + "GrÃ¶ÃŸe: " + getSizeString(size) + "<br>";
+            tooltip = "<html>" + "Pfad: " + name + "<br>" + "Größe: " + getSizeString(size) + "<br>";
             if (Node.getAnalysis() == DataAnalysis.BUGRELATEDCOUNT) {
                 if (fNode.isLeaf()) {
-                    tooltip = tooltip + "Anzahl Ã„nderungen: " + count;
+                    tooltip = tooltip + "Anzahl Änderungen: " + count;
                 } else {
-                    tooltip = tooltip + "Durchschnittliche Anzahl Ã„nderungen: " + count;
+                    tooltip = tooltip + "Durchschnittliche Anzahl Änderungen: " + count;
                 }
             } else if (Node.getAnalysis() == DataAnalysis.BUGRELATEDDURATION) {
                 if (fNode.isLeaf()) {
@@ -194,7 +194,7 @@ public class Draw implements TMComputeDraw {
         // ausgabe += "0";
         // if (ms < 100)
         // ausgabe += "0";
-        // ausgabe += Long.toString(ms); // nicht benÃ¶tigt
+        // ausgabe += Long.toString(ms); // nicht benötigt
 
         return ausgabe.toString();
     }

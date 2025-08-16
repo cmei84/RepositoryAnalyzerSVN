@@ -72,12 +72,12 @@ public class AnalysisComponent {
     private ImageIcon infoIcon;
 
     // Strings
-    private final String selectProjectBandToolTipText = "<html><strong>Projektauswahl:</strong><br>Hier bitte das Projekt auswÃ¤hlen,<br>dass analysiert werden soll.</html>";
-    private final String selectOptionsBandToolTipText = "<html><strong>Optionen:</strong><br>Hier bitte auswÃ¤hlen,<br>was alles analysiert werden soll.</html>";
+    private final String selectProjectBandToolTipText = "<html><strong>Projektauswahl:</strong><br>Hier bitte das Projekt auswählen,<br>dass analysiert werden soll.</html>";
+    private final String selectOptionsBandToolTipText = "<html><strong>Optionen:</strong><br>Hier bitte auswählen,<br>was alles analysiert werden soll.</html>";
     private final String runAnalysisBandToolTipText = "<html><strong>Import:</strong><br>Hier kann die Analyse gestartet werden.</html>";
-    private final String infoBandToolTipText = "<html><strong>Info:</strong><br>Hier erhalten Sie alle nÃ¶tigen Informationen,<br>" + "um den Analysevorgang auszufÃ¼hren.</html>";
-    private final String infoLabelMsg = "<html>Bitte wÃ¤hlen Sie ein Projekt aus der Liste, den Datumsbereich<br>und klicken Sie auf den Button 'Analyse Starten'.<br>"
-            + "Tastatureingaben in den Datumsfeldern bitte mit Enter anschlieÃŸen.<br>" + "Sie haben auch die MÃ¶glichkeit einzelne Analyseaufgaben abzuwÃ¤hlen.</html>";
+    private final String infoBandToolTipText = "<html><strong>Info:</strong><br>Hier erhalten Sie alle nötigen Informationen,<br>" + "um den Analysevorgang auszuführen.</html>";
+    private final String infoLabelMsg = "<html>Bitte wählen Sie ein Projekt aus der Liste, den Datumsbereich<br>und klicken Sie auf den Button 'Analyse Starten'.<br>"
+            + "Tastatureingaben in den Datumsfeldern bitte mit Enter anschließen.<br>" + "Sie haben auch die Möglichkeit einzelne Analyseaufgaben abzuwählen.</html>";
 
     // Icon
     private final String runAnalysisIcon = "icons/runAnalysis.64.png";
@@ -122,9 +122,9 @@ public class AnalysisComponent {
         selectProjectBand.setToolTipText(selectProjectBandToolTipText);
 
         // select analysis options
-        selectOptionsBand = new JRibbonBand("AuswertungsmÃ¶glichkeiten", types.getIcon(""));
+        selectOptionsBand = new JRibbonBand("Auswertungsmöglichkeiten", types.getIcon(""));
         selectOptionsPanel = new JPanel();
-        bugRelatedCountCheckBox = new JCheckBox("Ã„nderungshÃ¤ufigkeit");
+        bugRelatedCountCheckBox = new JCheckBox("Änderungshäufigkeit");
         bugRelatedCountCheckBox.setSelected(true);
         bugRelatedDurationCheckBox = new JCheckBox("Fehlerbehebungsdauer");
         bugRelatedDurationCheckBox.setSelected(true);
@@ -146,7 +146,7 @@ public class AnalysisComponent {
         runAnalysisCommandButton.addMouseListener(new RunAnalysisMouseListener(this));
         runAnalysisCommandButtonTooltip = new RichTooltip();
         runAnalysisCommandButtonTooltip.setTitle("Analyse starten");
-        runAnalysisCommandButtonTooltip.addDescriptionSection("Startet die Analyse des gewÃ¤hlten Projekts.");
+        runAnalysisCommandButtonTooltip.addDescriptionSection("Startet die Analyse des gewählten Projekts.");
         runAnalysisCommandButton.setActionRichTooltip(runAnalysisCommandButtonTooltip);
         runAnalysisCommandButton.setEnabled(false);
         runAnalysisPanel.add(runAnalysisCommandButton);

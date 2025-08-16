@@ -54,10 +54,10 @@ public class MaintenanceComponent {
     private JLabel infoIconLabel;
 
     // Strings
-    private final String infoLabelText = "<html>Um ein Projekt zu lÃ¶schen bitte das Projekt in der Liste AuswÃ¤hlen,<br>auf 'LÃ¶schen' klicken und BestÃ¤tigen.</html>";
+    private final String infoLabelText = "<html>Um ein Projekt zu löschen bitte das Projekt in der Liste Auswählen,<br>auf 'Löschen' klicken und Bestätigen.</html>";
 
     // Strings Tooltips
-    private final String selectProjectBandToolTipText = "<html><strong>Projektauswahl:</strong><br>Hier bitte das Projekt auswÃ¤hlen,<br>das bearbeitet werden soll.</html>";
+    private final String selectProjectBandToolTipText = "<html><strong>Projektauswahl:</strong><br>Hier bitte das Projekt auswählen,<br>das bearbeitet werden soll.</html>";
     private final String maintenanceBandToolTipText = "<html><strong>Wartung:</strong><br>Hier kann ein Projekt entfernt werden.</html>";
 
     // Icons

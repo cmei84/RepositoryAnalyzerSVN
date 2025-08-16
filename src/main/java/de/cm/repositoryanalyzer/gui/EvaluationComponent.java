@@ -69,17 +69,17 @@ public class EvaluationComponent {
     private JLabel infoIconLabel;
 
     // Field Strings
-    private final String infoLabelTextTreeMap = "<html>Einzoomen kÃ¶nnen Sie, indem Sie auf einen beliebigen Knoten klicken.<br>Ein Klick mit der rechten Maustaste zoomt auf den Vaterknoten aus.<br>Etwas anpassen kÃ¶nnen Sie die TreeMap unter 'Visualisierung anpassen'.</html>";
-    private final String infoLabelTextPanel = "<html>Hier sehen Sie einige Zahlen,<br> welche wÃ¤hrend der Analyse des Projektes erhoben wurden.</html>";
-    private final String manipulateTreeMapInfoLabelText = "<html>Hier kÃ¶nnen Sie die angezeigte TreeMap etwas anpassen.<br>Beachten Sie bitte, das wenn Sie Cushion einschalten<br>die Antwortzeit dieser Anwendung deutlich nachlassen kann.</html>";
-    private final String infoLabelTextCount = "<html><strong>Ã„nderngshÃ¤ufigkeit:</strong><br>Zeigt die Ã„nderungshÃ¤ufigkeit von Dateien an,<br>welche durch Bugfixes aufgetreten sind.</html>";
-    private final String infoLabelTextDuration = "<html><strong>Dauer von Bugfixes:</strong><br>Zeigt die Dauer von Bugfixes an.<br>Es werden nur Bugs der PrioritÃ¤t P1 und P2 berÃ¼cksichtigt.</html>";
-    private final String infoLabelTextStats = "<html><strong>Statistiken:</strong><br>Zeigt umfangreiche Informationen bezÃ¼glich des analysierten Projekts an.</html>";
+    private final String infoLabelTextTreeMap = "<html>Einzoomen können Sie, indem Sie auf einen beliebigen Knoten klicken.<br>Ein Klick mit der rechten Maustaste zoomt auf den Vaterknoten aus.<br>Etwas anpassen können Sie die TreeMap unter 'Visualisierung anpassen'.</html>";
+    private final String infoLabelTextPanel = "<html>Hier sehen Sie einige Zahlen,<br> welche während der Analyse des Projektes erhoben wurden.</html>";
+    private final String manipulateTreeMapInfoLabelText = "<html>Hier können Sie die angezeigte TreeMap etwas anpassen.<br>Beachten Sie bitte, das wenn Sie Cushion einschalten<br>die Antwortzeit dieser Anwendung deutlich nachlassen kann.</html>";
+    private final String infoLabelTextCount = "<html><strong>Änderngshäufigkeit:</strong><br>Zeigt die Änderungshäufigkeit von Dateien an,<br>welche durch Bugfixes aufgetreten sind.</html>";
+    private final String infoLabelTextDuration = "<html><strong>Dauer von Bugfixes:</strong><br>Zeigt die Dauer von Bugfixes an.<br>Es werden nur Bugs der Priorität P1 und P2 berücksichtigt.</html>";
+    private final String infoLabelTextStats = "<html><strong>Statistiken:</strong><br>Zeigt umfangreiche Informationen bezüglich des analysierten Projekts an.</html>";
 
     // Tooltip Strings
-    private final String selectAnalysisBandToolTipText = "<html><strong>Analyse:</strong><br>Hier bitte die Analyse auswÃ¤hlen,<br>welche ausgewertet werden soll.</html>";
-    private final String runEvaluationBandToolTipText = "<html><strong>Auswertung:</strong><br>Hier kÃ¶nnen die einzelnen Auswertungen angezeigt werden.</html>";
-    private final String selectOptionsBandToolTipText = "<html><strong>Optionen:</strong><br>Hier bitte auswÃ¤hlen,<br>ob alle Daten visualisiert werden sollen.</html>";
+    private final String selectAnalysisBandToolTipText = "<html><strong>Analyse:</strong><br>Hier bitte die Analyse auswählen,<br>welche ausgewertet werden soll.</html>";
+    private final String runEvaluationBandToolTipText = "<html><strong>Auswertung:</strong><br>Hier können die einzelnen Auswertungen angezeigt werden.</html>";
+    private final String selectOptionsBandToolTipText = "<html><strong>Optionen:</strong><br>Hier bitte auswählen,<br>ob alle Daten visualisiert werden sollen.</html>";
 
     // Icons
     private final String runBugRelatedCountIcon = "icons/runBugRelatedCount.64.png";
@@ -132,7 +132,7 @@ public class EvaluationComponent {
         showBugRelatedCoundCommandButton.setEnabled(false);
 
         RichTooltip showBugRelatedCoundCommandButtonRichToolTip = new RichTooltip();
-        showBugRelatedCoundCommandButtonRichToolTip.setTitle("Ã„nderungshÃ¤ufigkeit");
+        showBugRelatedCoundCommandButtonRichToolTip.setTitle("Änderungshäufigkeit");
         showBugRelatedCoundCommandButtonRichToolTip.addDescriptionSection(" ");
         showBugRelatedCoundCommandButton.setActionRichTooltip(showBugRelatedCoundCommandButtonRichToolTip);
 
@@ -165,7 +165,7 @@ public class EvaluationComponent {
         infoPanel = new JPanel();
         infoPanel.setLayout(new TableLayout(types.getInfoSize()));
         infoLabel = new JLabel(
-                "<html>Bitte wÃ¤hlen Sie eine Analyse aus.<br>FÃ¼r weitere Informationen Ã¼ber die AuswertungsmÃ¶glichkeiten<br>gehen Sie bitte mit der Maus Ã¼ber den entsprechenden Button.</html>");
+                "<html>Bitte wählen Sie eine Analyse aus.<br>Für weitere Informationen über die Auswertungsmöglichkeiten<br>gehen Sie bitte mit der Maus über den entsprechenden Button.</html>");
         infoIcon = new ImageIcon(types.getImage(types.getInfoIconPath()));
         infoIconLabel = new JLabel(infoIcon);
 

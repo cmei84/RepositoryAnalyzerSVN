@@ -172,7 +172,7 @@ public class MainWindow extends JRibbonFrame implements Observer {
                 DataStore.dataStore.refreshProjects();
                 loadProjects();
                 this.setContentPane(null);
-                this.importComponent.setInfoLabelText("<html>Import erfolgreich.<br>Nun kÃ¶nnen Sie die importierten Daten analysieren.</html>");
+                this.importComponent.setInfoLabelText("<html>Import erfolgreich.<br>Nun können Sie die importierten Daten analysieren.</html>");
             }
             if (messageString.equals("analysis finished")) {
                 this.loadAnalysis();
