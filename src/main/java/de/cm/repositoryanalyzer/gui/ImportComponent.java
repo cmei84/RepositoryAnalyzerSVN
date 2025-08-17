@@ -97,7 +97,7 @@ public class ImportComponent {
         openXMLFileCommandButton = new JCommandButton("XML-Datei öffnen", types.getIcon(openXMLIcon));
         openXMLFileCommandButtonRichToolTip = new RichTooltip();
         openXMLFileCommandButtonRichToolTip.setTitle("XML-Datei öffnen");
-        openXMLFileCommandButtonRichToolTip.addDescriptionSection("Ã–ffnen einer XML-Datei mit Ticket-Informationen des Bug-Trackers");
+        openXMLFileCommandButtonRichToolTip.addDescriptionSection("Öffnen einer XML-Datei mit Ticket-Informationen des Bug-Trackers");
         openXMLFileCommandButton.setActionRichTooltip(openXMLFileCommandButtonRichToolTip);
 
         openXMLFileCommandButton.addActionListener(new OpenXMLFileActionListener(this));
