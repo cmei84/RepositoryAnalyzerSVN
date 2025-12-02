@@ -26,8 +26,9 @@
 
 package net.bouthier.treemapSwing;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * The TMNodeModelComposite implements the Composite design pattern for TMNodeModel. It represent a
@@ -38,9 +39,9 @@ import java.util.Vector;
  */
 class TMNodeModelComposite extends TMNodeModel {
 
-    private Vector<TMNodeModel> children = null; // children of this node
+    private final List<TMNodeModel> children; // children of this node
     private boolean dirtyBufC = true; // the buffered children is dirty
-    private Vector<TMNodeModel> bufChild = null; // children buffer
+    private List<TMNodeModel> bufChild = Collections.emptyList(); // children buffer
 
     /* --- Constructor --- */
 
@@ -63,14 +64,10 @@ class TMNodeModelComposite extends TMNodeModel {
      */
     TMNodeModelComposite(TMNode node, TMNodeModelComposite parent, TMNodeModelRoot modelRoot) {
         super(node, parent, modelRoot);
-        this.children = new Vector<TMNodeModel>();
+        this.children = new ArrayList<>();
 
-        TMNode childNode = null;
-        TMNodeModel child = null;
-        for (Enumeration<?> e = node.children(); e.hasMoreElements();) {
-            // should test here that e is not null
-            // should test here that we really have a TMNode object
-            childNode = (TMNode) e.nextElement();
+        for (TMNode childNode : node.children()) {
+            TMNodeModel child;
             if (childNode.isLeaf()) {
                 child = new TMNodeModel(childNode, this, modelRoot);
             } else {
@@ -83,22 +80,22 @@ class TMNodeModelComposite extends TMNodeModel {
     /* --- Tree management --- */
 
     /**
-     * Returns the children of this node, in an Enumeration.
+     * Returns the children of this node.
      * 
      * @return the children of this node
      */
-    Enumeration<TMNodeModel> children() {
-        return bufChild.elements();
+    List<TMNodeModel> children() {
+        return Collections.unmodifiableList(bufChild);
     }
 
     /**
-     * Returns the non-buffered children of this node, in an Enumeration. Could only be called in a
+     * Returns the non-buffered children of this node. Could only be called in a
      * TMThreadQueue thread.
      * 
      * @return the non-buffered children of this node
      */
-    private Enumeration<TMNodeModel> trueChildren() {
-        return children.elements();
+    private List<TMNodeModel> trueChildren() {
+        return Collections.unmodifiableList(children);
     }
 
     /**
@@ -107,7 +104,7 @@ class TMNodeModelComposite extends TMNodeModel {
      * @param child the child
      */
     private void addChild(TMNodeModel child) {
-        children.addElement(child);
+        children.add(child);
         dirtyBufC = true;
     }
 
@@ -117,7 +114,7 @@ class TMNodeModelComposite extends TMNodeModel {
      * @param child the child
      */
     private void removeChild(TMNodeModel child) {
-        children.removeElement(child);
+        children.remove(child);
         dirtyBufC = true;
     }
 
@@ -142,8 +139,8 @@ class TMNodeModelComposite extends TMNodeModel {
      */
     TMNodeModel nodeContaining(int x, int y) {
         if (area.contains(x, y)) {
-            for (Enumeration<TMNodeModel> e = children(); e.hasMoreElements();) {
-                TMNodeModel neo = ((TMNodeModel) e.nextElement()).nodeContaining(x, y);
+            for (TMNodeModel child : children()) {
+                TMNodeModel neo = child.nodeContaining(x, y);
                 if (neo != null) {
                     return neo;
                 }
@@ -166,8 +163,8 @@ class TMNodeModelComposite extends TMNodeModel {
         if (this.node == node) {
             return this;
         } else {
-            for (Enumeration<TMNodeModel> e = trueChildren(); e.hasMoreElements();) {
-                TMNodeModel neo = ((TMNodeModel) e.nextElement()).nodeContaining(node);
+            for (TMNodeModel child : trueChildren()) {
+                TMNodeModel neo = child.nodeContaining(node);
                 if (neo != null) {
                     return neo;
                 }
@@ -187,8 +184,8 @@ class TMNodeModelComposite extends TMNodeModel {
         if (dirtyS) {
             size = 0.0f;
             TMNodeModel child = null;
-            for (Enumeration<TMNodeModel> e = trueChildren(); e.hasMoreElements();) {
-                child = (TMNodeModel) e.nextElement();
+            for (TMNodeModel childNode : trueChildren()) {
+                child = childNode;
                 size += child.computeSize();
             }
             dirtyBufS = true;
@@ -204,8 +201,8 @@ class TMNodeModelComposite extends TMNodeModel {
     void computeDrawing() {
         super.computeDrawing();
         TMNodeModel child = null;
-        for (Enumeration<TMNodeModel> e = trueChildren(); e.hasMoreElements();) {
-            child = (TMNodeModel) e.nextElement();
+        for (TMNodeModel childNode : trueChildren()) {
+            child = childNode;
             child.computeDrawing();
         }
     }
@@ -213,16 +210,15 @@ class TMNodeModelComposite extends TMNodeModel {
     /**
      * Clear dirty buffers.
      */
-    @SuppressWarnings("unchecked")
     void clearBuffers() {
         if (dirtyBufC) {
-            bufChild = (Vector<TMNodeModel>) children.clone();
+            bufChild = new ArrayList<>(children);
             dirtyBufC = false;
         }
         super.clearBuffers();
         TMNodeModel child = null;
-        for (Enumeration<TMNodeModel> e = trueChildren(); e.hasMoreElements();) {
-            child = (TMNodeModel) e.nextElement();
+        for (TMNodeModel childNode : trueChildren()) {
+            child = childNode;
             child.clearBuffers();
         }
     }
@@ -256,8 +252,8 @@ class TMNodeModelComposite extends TMNodeModel {
     void flushDraw() {
         super.flushDraw();
         TMNodeModel child = null;
-        for (Enumeration<TMNodeModel> e = trueChildren(); e.hasMoreElements();) {
-            child = (TMNodeModel) e.nextElement();
+        for (TMNodeModel childNode : trueChildren()) {
+            child = childNode;
             child.flushDraw();
         }
     }
@@ -268,8 +264,8 @@ class TMNodeModelComposite extends TMNodeModel {
     void flushAll() {
         super.flushAll();
         TMNodeModel child = null;
-        for (Enumeration<TMNodeModel> e = trueChildren(); e.hasMoreElements();) {
-            child = (TMNodeModel) e.nextElement();
+        for (TMNodeModel childNode : trueChildren()) {
+            child = childNode;
             child.flushAll();
         }
     }

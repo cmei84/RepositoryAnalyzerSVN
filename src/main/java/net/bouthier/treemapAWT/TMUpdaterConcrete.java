@@ -26,7 +26,6 @@
 
 package net.bouthier.treemapAWT;
 
-import java.util.Enumeration;
 import java.util.Observable;
 
 
@@ -72,10 +71,7 @@ class TMUpdaterConcrete
     private void setUpdater(TMNode node) {
         node.setUpdater(this);
         if (! node.isLeaf()) {
-            for (Enumeration e = node.children(); e.hasMoreElements(); ) {
-                // should test here that e is not null
-                // should test here that we really have a TMNode object
-                TMNode childNode = (TMNode) e.nextElement();
+            for (TMNode childNode : node.children()) {
                 setUpdater(childNode);
             }
         }
@@ -142,4 +138,3 @@ class TMUpdaterConcrete
     }
 
 }
-

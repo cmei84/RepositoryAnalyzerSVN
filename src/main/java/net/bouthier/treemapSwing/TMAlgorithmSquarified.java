@@ -28,8 +28,8 @@ package net.bouthier.treemapSwing;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The TMAlgorithmSquarified class implements a squarified treemap drawing algorithm. See Bruls,
@@ -61,7 +61,7 @@ public class TMAlgorithmSquarified extends TMAlgorithm {
 
         TMNodeModel child = null;
 
-        Vector<TMNodeModel> sortedChilds = new Vector<TMNodeModel>();
+        List<TMNodeModel> sortedChilds = new ArrayList<>();
 
         if (pSize == 0.0f) {
             return;
@@ -76,8 +76,8 @@ public class TMAlgorithmSquarified extends TMAlgorithm {
 
         // sort child in decreasing size order
         boolean isFirst = true;
-        for (Enumeration<TMNodeModel> e = node.children(); e.hasMoreElements();) {
-            child = e.nextElement();
+        for (TMNodeModel iterChild : node.children()) {
+            child = iterChild;
             float cSize = child.getSize();
             if (isFirst) {
                 sortedChilds.add(child);
@@ -86,7 +86,7 @@ public class TMAlgorithmSquarified extends TMAlgorithm {
                 boolean childSorted = false;
                 TMNodeModel candidate = null;
                 for (int index = 0; index < sortedChilds.size(); index++) {
-                    candidate = (TMNodeModel) sortedChilds.get(index);
+                    candidate = sortedChilds.get(index);
                     float candidateSize = candidate.getSize();
                     if (candidateSize < cSize) {
                         sortedChilds.add(index, child);
@@ -102,7 +102,7 @@ public class TMAlgorithmSquarified extends TMAlgorithm {
 
         while (!sortedChilds.isEmpty()) {
             child = sortedChilds.remove(0);
-            Vector<TMNodeModel> block = new Vector<TMNodeModel>();
+            List<TMNodeModel> block = new ArrayList<>();
             block.add(child);
             float blockSize = child.getSize();
             short blockAxis = HORIZONTAL;
@@ -121,7 +121,7 @@ public class TMAlgorithmSquarified extends TMAlgorithm {
             float ratio = ratio(w, h);
             boolean blockDone = false;
             while ((!sortedChilds.isEmpty()) && (!blockDone)) {
-                TMNodeModel candidate = (TMNodeModel) sortedChilds.firstElement();
+                TMNodeModel candidate = sortedChilds.get(0);
                 float newSize = candidate.getSize();
                 float newBlockSize = blockSize + newSize;
                 float newW = 0.0f;
@@ -160,13 +160,15 @@ public class TMAlgorithmSquarified extends TMAlgorithm {
             float proportion = 0.0f;
             float remaining = 0.0f;
 
-            for (Enumeration<TMNodeModel> e = block.elements(); e.hasMoreElements();) {
-                child = e.nextElement();
+            int blockCount = block.size();
+            for (int i = 0; i < blockCount; i++) {
+                child = block.get(i);
                 Rectangle cArea = child.getArea();
                 cArea.x = childX;
                 cArea.y = childY;
                 proportion = (child.getSize()) / blockSize;
-                if (e.hasMoreElements()) {
+                boolean hasMore = i < blockCount - 1;
+                if (hasMore) {
                     if (blockAxis == HORIZONTAL) {
                         float fHeight = proportion * height;
                         childHeight = Math.round(fHeight);

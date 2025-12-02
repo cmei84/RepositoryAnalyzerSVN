@@ -26,7 +26,6 @@
 
 package net.bouthier.treemapSwing;
 
-import java.util.Enumeration;
 import java.util.Observable;
 
 /**
@@ -61,14 +60,10 @@ class TMUpdaterConcrete extends Observable implements TMUpdater {
      * 
      * @param node the root of the TMNode tree to set updater on
      */
-    @SuppressWarnings("unchecked")
     private void setUpdater(TMNode node) {
         node.setUpdater(this);
         if (!node.isLeaf()) {
-            for (Enumeration<TMNode> e = (Enumeration<TMNode>) node.children(); e.hasMoreElements();) {
-                // should test here that e is not null
-                // should test here that we really have a TMNode object
-                TMNode childNode = e.nextElement();
+            for (TMNode childNode : node.children()) {
                 setUpdater(childNode);
             }
         }

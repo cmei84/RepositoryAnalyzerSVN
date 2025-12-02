@@ -26,8 +26,10 @@
 
 package net.bouthier.treemapSwing;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Enumeration;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * The TMNodeEncapsulator class implements an encapsulator for user's nodes when using a
@@ -41,7 +43,7 @@ class TMNodeEncapsulator implements TMNode {
     private TMModelNode model = null; // the tree model
     private Object node = null; // the node encapsulated
 
-    private Vector<TMNodeEncapsulator> children = null; // the children of this node
+    private final List<TMNodeEncapsulator> children; // the children of this node
 
     /* --- Constructor --- */
 
@@ -55,7 +57,7 @@ class TMNodeEncapsulator implements TMNode {
         this.model = model;
         this.node = node;
         mu.addNode(node, this);
-        children = new Vector<TMNodeEncapsulator>();
+        children = new ArrayList<>();
         if (!model.isLeaf(node)) {
             Object childNode = null;
             TMNodeEncapsulator child = null;
@@ -86,7 +88,7 @@ class TMNodeEncapsulator implements TMNode {
      * @param child the TMFileNode to add as a child
      */
     void addChild(TMNodeEncapsulator child) {
-        children.addElement(child);
+        children.add(child);
     }
 
     /**
@@ -95,18 +97,18 @@ class TMNodeEncapsulator implements TMNode {
      * @param child the TMFileChild to remove.
      */
     void removeChild(TMNodeEncapsulator child) {
-        children.removeElement(child);
+        children.remove(child);
     }
 
     /* --- TMNode ___ */
 
     /**
-     * Returns the children of this node in an Enumeration.
+     * Returns the children of this node.
      * 
-     * @return an Enumeration containing childs of this node
+     * @return an immutable List containing childs of this node
      */
-    public Enumeration<?> children() {
-        return children.elements();
+    public List<TMNodeEncapsulator> children() {
+        return Collections.unmodifiableList(children);
     }
 
     /**

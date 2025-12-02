@@ -26,9 +26,9 @@
 
 package de.cm.repositoryanalyzer.gui.TreeMap;
 
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 import net.bouthier.treemapSwing.TMNode;
 import net.bouthier.treemapSwing.TMUpdater;
@@ -47,7 +47,7 @@ public class Node implements TMNode {
     private int value; // the value
     private int count; // needed for color
     private int bugID;
-    private Vector<Node> children; // children of the node
+    private final List<Node> children; // children of the node
     private Node parent;
 
     /* --- Constructor --- */
@@ -59,7 +59,7 @@ public class Node implements TMNode {
      * @param value value
      */
     public Node(final String name, final int value) {
-        children = new Vector<Node>();
+        children = new ArrayList<>();
         this.name = name;
         this.value = value;
         this.parent = null;
@@ -103,12 +103,12 @@ public class Node implements TMNode {
     /* --- TMNode --- */
 
     /**
-     * Returns the children of this node in an Enumeration.
+     * Returns the children of this node.
      * 
-     * @return an Enumeration containing childs of this node
+     * @return an immutable List containing childs of this node
      */
-    public Enumeration<Node> children() {
-        return children.elements();
+    public List<Node> children() {
+        return Collections.unmodifiableList(children);
     }
 
     /**
@@ -117,10 +117,7 @@ public class Node implements TMNode {
      * @return <CODE>true</CODE> if this node is a leaf; <CODE>false</CODE> otherwise
      */
     public boolean isLeaf() {
-        if (children == null || children.isEmpty() || children.size() < 1) {
-            return true;
-        }
-        return false;
+        return children.isEmpty();
     }
 
     /**

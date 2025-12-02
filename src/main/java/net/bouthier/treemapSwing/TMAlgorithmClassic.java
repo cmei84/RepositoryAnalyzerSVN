@@ -28,7 +28,6 @@ package net.bouthier.treemapSwing;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.util.Enumeration;
 
 /**
  * The TMAlgorithmClassic class implements a classic treemap drawing algorithm.
@@ -78,14 +77,17 @@ public class TMAlgorithmClassic extends TMAlgorithm {
         int maxX = x + w - 1;
         int maxY = y + h - 1;
 
-        for (Enumeration<TMNodeModel> e = node.children(); e.hasMoreElements();) {
-            child = e.nextElement();
+        java.util.List<TMNodeModel> children = node.children();
+        int childCount = children.size();
+        for (int i = 0; i < childCount; i++) {
+            child = children.get(i);
             childArea = child.getArea();
             childArea.x = x;
             childArea.y = y;
             proportion = (child.getSize()) / size;
 
-            if (e.hasMoreElements()) {
+            boolean hasMore = i < childCount - 1;
+            if (hasMore) {
                 if (axis == HORIZONTAL) {
                     newDf = proportion * w;
                     newDi = Math.round(newDf);

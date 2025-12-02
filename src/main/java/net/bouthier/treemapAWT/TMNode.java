@@ -26,7 +26,7 @@
 
 package net.bouthier.treemapAWT;
 
-import java.util.Enumeration;
+import java.util.List;
 
 
 /**
@@ -43,17 +43,16 @@ import java.util.Enumeration;
 public interface TMNode {
 
     /**
-     * Returns the children of this node
-     * in an Enumeration.
+     * Returns the children of this node in a List.
      * If this object does not have children,
-     * it should return an empty Enumeration,
+     * it should return an empty List,
      * not <CODE>null</CODE>.
-     * All objects contained in the Enumeration
+     * All objects contained in the List
      * should implements TMNode.
      *
-     * @return    an Enumeration containing childs of this node
+     * @return    a List containing childs of this node
      */
-    public Enumeration children();
+    public List<? extends TMNode> children();
 
     /**
      * Checks if this node is a leaf or not.
