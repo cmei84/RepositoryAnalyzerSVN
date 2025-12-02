@@ -66,20 +66,6 @@ public class TreeMap {
         updater = new TMUpdaterConcrete(root);
     }
 
-    /**
-     * Constructor.
-     *
-     * @param model    the model of the tree to be represented;
-     *                 could not be <CODE>null</CODE>
-     */
-    public TreeMap(TMModelNode model) {
-        if (model == null) {
-            throw new TMExceptionNullParameter(
-                "Impossible to build a tree" + " from a null model.");
-        }
-        updater = (new TMModelUpdaterConcrete(model)).getUpdater();
-    }
-
     /* --- View --- */
 
     /**

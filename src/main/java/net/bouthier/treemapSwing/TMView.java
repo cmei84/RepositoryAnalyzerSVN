@@ -276,11 +276,11 @@ public class TMView extends JPanel implements Observer {
         TMNodeModel nodeM = root.nodeContaining(event.getX(), event.getY());
         if (nodeM != null) {
             TMNode node = nodeM.getNode();
-            if (node instanceof TMNodeEncapsulator) {
-                return ((TMNodeEncapsulator) node).getNode();
-            } else {
+//            if (node instanceof TMNodeEncapsulator) {
+//                return ((TMNodeEncapsulator) node).getNode();
+//            } else {
                 return node;
-            }
+//            }
         } else {
             return null;
         }

@@ -44,12 +44,12 @@ public abstract class TMComputeDrawAdapter
      * DO NOT OVERLOAD.
      */
     public final boolean isCompatibleWith(TMNode node) {
-        if (node instanceof TMNodeEncapsulator) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return isCompatibleWithObject(n.getNode());
-        } else {
+//        if (node instanceof TMNodeEncapsulator) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return isCompatibleWithObject(n.getNode());
+//        } else {
             return false;
-        }
+//        }
     }
 
     /**
@@ -60,12 +60,12 @@ public abstract class TMComputeDrawAdapter
 
         TMNode node = nodeAdapter.getNode();
 
-        if (isCompatibleWith(node)) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return getFillingOfObject(n.getNode());
-        } else {
+//        if (isCompatibleWith(node)) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return getFillingOfObject(n.getNode());
+//        } else {
             throw new TMExceptionBadTMNodeKind(this, node);
-        }
+//        }
     }
 
     /**
@@ -75,12 +75,12 @@ public abstract class TMComputeDrawAdapter
         throws TMExceptionBadTMNodeKind {
 
         TMNode node = nodeAdapter.getNode();
-        if (isCompatibleWith(node)) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return getTooltipOfObject(n.getNode());
-        } else {
+//        if (isCompatibleWith(node)) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return getTooltipOfObject(n.getNode());
+//        } else {
             throw new TMExceptionBadTMNodeKind(this, node);
-        }
+//        }
     }
 
     /**
@@ -90,12 +90,12 @@ public abstract class TMComputeDrawAdapter
         throws TMExceptionBadTMNodeKind {
 
         TMNode node = nodeAdapter.getNode();
-        if (isCompatibleWith(node)) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return getTitleOfObject(n.getNode());
-        } else {
+//        if (isCompatibleWith(node)) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return getTitleOfObject(n.getNode());
+//        } else {
             throw new TMExceptionBadTMNodeKind(this, node);
-        }
+//        }
     }
 
     /**
@@ -105,12 +105,12 @@ public abstract class TMComputeDrawAdapter
         throws TMExceptionBadTMNodeKind {
 
         TMNode node = nodeAdapter.getNode();
-        if (isCompatibleWith(node)) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return getColorTitleOfObject(n.getNode());
-        } else {
+//        if (isCompatibleWith(node)) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return getColorTitleOfObject(n.getNode());
+//        } else {
             throw new TMExceptionBadTMNodeKind(this, node);
-        }
+//        }
     }
 
     /**

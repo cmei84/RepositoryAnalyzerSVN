@@ -42,12 +42,12 @@ public abstract class TMComputeSizeAdapter
      * DO NOT OVERLOAD.
      */
     public final boolean isCompatibleWith(TMNode node) {
-        if (node instanceof TMNodeEncapsulator) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return isCompatibleWithObject(n.getNode());
-        } else {
+//        if (node instanceof TMNodeEncapsulator) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return isCompatibleWithObject(n.getNode());
+//        } else {
             return false;
-        }
+//        }
     }
 
     /**
@@ -56,12 +56,12 @@ public abstract class TMComputeSizeAdapter
     public final float getSize(TMNode node) 
     	throws TMExceptionBadTMNodeKind {
 
-        if (isCompatibleWith(node)) {
-            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
-            return getSizeOfObject(n.getNode());
-        } else {
+//        if (isCompatibleWith(node)) {
+//            TMNodeEncapsulator n = (TMNodeEncapsulator) node;
+//            return getSizeOfObject(n.getNode());
+//        } else {
             throw new TMExceptionBadTMNodeKind(this, node);
-        }
+//        }
     }
 
     /**

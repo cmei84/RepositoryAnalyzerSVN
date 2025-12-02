@@ -63,16 +63,4 @@ public interface TMModelNode {
      */
     public boolean isLeaf(Object node);
 
-    /**
-     * Called by the TMModelUpdater constructor. Gives to this model of nodes a reference to a
-     * TMModelUpdater object. This node should use this reference to notify treemap that something
-     * has changed. See the differents update methods of the TMModelUpdater interface.
-     * <P>
-     * As this method is called by the constructor of TMModelUpdater, don't call methods of
-     * TMModelUpdater in this method.
-     * 
-     * @param updater TMModelUpdater to be called when something has changed
-     */
-    public void setUpdater(TMModelUpdater updater);
-
 }
