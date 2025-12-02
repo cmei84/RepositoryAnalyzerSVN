@@ -81,8 +81,8 @@ public class Draw implements TMComputeDraw {
             }
 
             if (count >= Node.getFactor()) {
-                int green = new Double(color.getGreen() - (color.getGreen() * 1.0 / max) * count).intValue();
-                int blue = new Double(color.getBlue() - (color.getBlue() * 1.0 / max) * count).intValue();
+                int green = (int)(color.getGreen() - (color.getGreen() * 1.0 / max) * count);
+                int blue = (int)(color.getBlue() - (color.getBlue() * 1.0 / max) * count);
                 if (green < 0) {
                     green = 0;
                 }
