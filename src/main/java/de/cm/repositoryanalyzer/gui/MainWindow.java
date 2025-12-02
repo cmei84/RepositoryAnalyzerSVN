@@ -7,8 +7,10 @@ import de.cm.repositoryanalyzer.dataImport.Project;
 import de.cm.repositoryanalyzer.util.DataStore;
 
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -59,6 +61,7 @@ public class MainWindow extends JRibbonFrame implements Observer {
         applicationMenu = new RibbonApplicationMenu();
 
         types = new Types();
+        setApplicationIcons();
 
         importComponent = new ImportComponent(this);
         ribbon.addTask(importComponent.getTask());
@@ -246,5 +249,30 @@ public class MainWindow extends JRibbonFrame implements Observer {
      */
     public void addApplicationMenuEntry(final RibbonApplicationMenuEntryPrimary entry) {
         applicationMenu.addMenuEntry(entry);
+    }
+
+    /**
+     * Loads and applies the window icons in different sizes.
+     */
+    private void setApplicationIcons() {
+        List<Image> icons = new ArrayList<>();
+
+        Image icon16 = types.getImage("icons/app.icon.16.png");
+        Image icon32 = types.getImage("icons/app.icon.32.png");
+        Image icon48 = types.getImage("icons/app.icon.48.png");
+
+        if (icon16 != null) {
+            icons.add(icon16);
+        }
+        if (icon32 != null) {
+            icons.add(icon32);
+        }
+        if (icon48 != null) {
+        	icons.add(icon48);
+        }
+
+        if (!icons.isEmpty()) {
+            this.setIconImages(icons);
+        }
     }
 }
